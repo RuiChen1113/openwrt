@@ -410,7 +410,18 @@ wpj558)
 	ucidef_add_switch_vlan "switch0" "1" "5 6t"
 	ucidef_add_switch_vlan "switch0" "2" "1 6t"
 	;;
-
+ap143)
+	ucidef_set_interfaces_lan_wan "eth1" "eth0"
+	lan_mac=$(cat /sys/class/net/eth1/address)
+	wan_mac=$(macaddr_add "$lan_mac" 1)
+	wlan_mac=$(macaddr_add "$lan_mac" 2)
+	sta_mac=$(macaddr_add "$lan_mac" 3)
+	[ -n "$lan_mac" ] && ucidef_set_interface_macaddr lan $lan_mac
+	[ -n "$wlan_mac" ] && ucidef_set_wireless_macaddr radio0 $wlan_mac
+	[ -n "$wan_mac" ] && ucidef_set_interface_macaddr wan $wan_mac
+	[ -n "$lan_mac" ] && [ -n "$lan_mac" ] && [ -n "$lan_mac" ] && [ -n "$lan_mac" ]&& \
+	ucidef_set_interface_def_macaddr $lan_mac $wan_mac $wlan_mac $sta_mac
+	;;
 ap121 |\
 ap121-mini |\
 ap96 |\

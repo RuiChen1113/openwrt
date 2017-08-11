@@ -1,0 +1,28 @@
+Index: linux-3.18.45/arch/mips/ath79/dev-wmac.c
+===================================================================
+--- linux-3.18.45.orig/arch/mips/ath79/dev-wmac.c	2017-08-10 09:42:12.937491503 +0800
++++ linux-3.18.45/arch/mips/ath79/dev-wmac.c	2017-08-10 09:49:04.097515944 +0800
+@@ -398,6 +398,11 @@
+ 		ar934x_set_ext_lna_gpio(chain, gpio);
+ }
+ 
++void __init ath79_wmac_set_led_pin(int gpio)
++{
++	ath79_wmac_data.led_pin = gpio;
++}
++
+ void __init ath79_register_wmac(u8 *cal_data, u8 *mac_addr)
+ {
+ 	if (soc_is_ar913x())
+Index: linux-3.18.45/arch/mips/ath79/dev-wmac.h
+===================================================================
+--- linux-3.18.45.orig/arch/mips/ath79/dev-wmac.h	2017-08-10 09:42:12.833491497 +0800
++++ linux-3.18.45/arch/mips/ath79/dev-wmac.h	2017-08-10 09:54:12.949534303 +0800
+@@ -18,6 +18,7 @@
+ void ath79_wmac_disable_5ghz(void);
+ void ath79_wmac_set_tx_gain_buffalo(void);
+ void ath79_wmac_set_ext_lna_gpio(unsigned chain, int gpio);
++void ath79_wmac_set_led_pin(int gpio);
+ 
+ bool ar93xx_wmac_read_mac_address(u8 *dest);
+ 

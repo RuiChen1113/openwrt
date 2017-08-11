@@ -468,7 +468,10 @@ $(eval $(call application,watchcat,LuCI Support for Watchcat,\
 
 $(eval $(call application,openswan,LuCI Support for Openswan,\
 	+PACKAGE_luci-app-openswan:openswan))
-
+	
+$(eval $(call application,apfree_wifidog,LuCI Support for apfree_wifidog,\
+	+PACKAGE_luci-app-apfree_wifidog:apfree_wifidog))
+	
 ### Server Gateway Interfaces ###
 define sgi
   define Package/luci-sgi-$(1)
