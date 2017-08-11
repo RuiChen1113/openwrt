@@ -1,11 +1,12 @@
 config system
-	option hostname	OpenWrt
-	option timezone	UTC
-
+	option zonename 'Asia/Shanghai'
+	option timezone 'CST-8'
+	option hostname 'Ecsg3K'
+	
 config timeserver ntp
+	list server s1a.time.edu.cn
 	list server	0.openwrt.pool.ntp.org
 	list server	1.openwrt.pool.ntp.org
 	list server	2.openwrt.pool.ntp.org
-	list server	3.openwrt.pool.ntp.org
 	option enabled 1
 	option enable_server 0
